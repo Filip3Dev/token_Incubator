@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  place-items: center;
+  font-size: 14px;
+  color: rgb(102, 112, 133);
+  /* background: rgb(2, 31, 14) url(./assets/gradiente-bg.svg) no-repeat center center fixed !important; 
+  background-size: cover;  */
+  /*
+  /* background: rgba(249, 250,251, 1) !important; */
+  /* min-height: 100vh; */
+}
+
