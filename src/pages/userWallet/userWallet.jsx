@@ -17,7 +17,7 @@ const UserWallet = () => {
       ) {
         try {
           const response = await axios.get(
-            `https://api-backend-theta.vercel.app/${walletClient.account.address}`
+            `https://api-backend-theta.vercel.app/tokens/${walletClient.account.address}`
           );
           if (
             response.data &&
