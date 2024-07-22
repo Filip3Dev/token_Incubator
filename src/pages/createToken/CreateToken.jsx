@@ -35,12 +35,10 @@ import tokenContractABIJson from "../../util/artifacts/ABI.json";
 const tokenAddress = addressJson["TestTokenModule#TestToken"];
 const tokenContractABI = tokenContractABIJson.abi;
 
-const client = createPublicClient({
-  transport: http(`https://1440002.rpc.thirdweb.com`),
+const defaultRpc = `https://1440002.rpc.thirdweb.com`;
+const lachianRpc = `https://rpc.testnet.lachain.network`;
 
-});
-
-function createTokenYour() {
+const createTokenYour = () => {
   const { data: walletClient } = useWalletClient();
   const [name, setName] = useState("");
   const [symbol, setSymbol] = useState("");
@@ -62,6 +60,15 @@ function createTokenYour() {
   const [toasts, setToasts] = useState([]); // State to manage toasts
 
   console.log("walletClient", walletClient);
+
+  const rpcUrl =
+    walletClient && walletClient.chain && walletClient.chain.id === 418
+      ? lachianRpc
+      : defaultRpc;
+
+  const client = createPublicClient({
+    transport: http(rpcUrl)
+  });
 
   const formatNumber = (num) => {
     return num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -419,7 +426,7 @@ function createTokenYour() {
               <Col md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Meta máxima (XRPL) *{" "}
+                    Meta máxima (XRPL/Lachain) *{" "}
                     <OverlayTrigger
                       placement="top"
                       overlay={
@@ -608,6 +615,6 @@ function createTokenYour() {
       </div>
     </Container>
   );
-}
+};
 
 export default createTokenYour;
