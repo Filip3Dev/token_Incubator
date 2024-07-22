@@ -59,8 +59,6 @@ const createTokenYour = () => {
   const [validated, setValidated] = useState(false);
   const [toasts, setToasts] = useState([]); // State to manage toasts
 
-  console.log("walletClient", walletClient);
-
   const rpcUrl =
     walletClient && walletClient.chain && walletClient.chain.id === 418
       ? lachianRpc
@@ -177,7 +175,7 @@ const createTokenYour = () => {
       const fromBlock = latestBlock - 10000n > 0n ? latestBlock - 10000n : 0n;
       const toBlock = latestBlock;
 
-      console.log(`Fetching logs from block ${fromBlock} to ${toBlock}`);
+      //console.log(`Fetching logs from block ${fromBlock} to ${toBlock}`);
 
       const rawLogs = await client.getLogs({
         address: tokenAddress,
@@ -248,7 +246,7 @@ const createTokenYour = () => {
           body: JSON.stringify(dataToSend)
         });
 
-        console.log("Log mais recente:", latestLog);
+        //console.log("Log mais recente:", latestLog);
 
         // Adicionar o toast de confirmação
         setToasts((prevToasts) => [
